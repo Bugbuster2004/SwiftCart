@@ -3,6 +3,7 @@ const app = express();
 const port = 5000;
 const jwt = require("jsonwebtoken")
 const UserModel = require("./models/usermodel")
+const jwtkey ="sid";
 require("./connection/conn")
 app.use(express.json());
 
@@ -12,20 +13,19 @@ app.get("/", (req,res) =>{
     res.send("Hello World");
 })
 
-//register route
+//__________________register route_________________
 app.post("/register", async (req,res)=>{
     const { email, password} = req.body;
     try {
         const existinguser = await UserModel.findOne({email, password});
         if(existinguser){
             console.log(existinguser);
-            res.status(400).send("User already exists")
-
-            
+            res.status(400).send("User already exists")      
         
     } 
     const newuser = await UserModel.create(req.body);
-     jwt.sign({user: newuser}, "secretkey", (err, token) =>{
+    //assigns a token to the user
+     jwt.sign({user: newuser}, jwtkey, (err, token) =>{
         if(err){
             console.log("token not found this is from register", err);
             return res.status(401).send("token not found", err);
@@ -45,6 +45,37 @@ app.post("/register", async (req,res)=>{
 
 }
 )
+//_________________login route____________________
+app.post("/login", async(req,res) =>{
+    const {email, password} = req.body;
+    try {
+        const existinguser = await UserModel.findOne({email, password});
+        if(existinguser){
+            console.log(existinguser);
+            if(existinguser.password === password){
+                console.log(existinguser.password);
+                console.log(password);
+                jwt.sign({ user: existinguser }, jwtkey, (err, token) => {
+                    if (err) {
+                      return res.send({ result: "user not found from jwt sign" });
+                    }
+                    res.status(200).send({ existinguser, auth: token });
+                  });
+                //   res.status(200).send({ existinguser, auth: token });
+
+
+            }
+        
+            
+    } else{
+        res.status(400).send("User not found")
+    }
+}catch (error) {
+    res.status(400).send({message:error.message})
+        
+    }
+
+})
 
 
 app.listen(port, () => {
