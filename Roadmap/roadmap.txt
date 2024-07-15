@@ -1,0 +1,11 @@
+how to create an ecommerce website roadmap
+
+
+
+1. we create a backend and a frontend foler
+2.then we created app.js
+3.imported express and all the required dependencies to start the server
+4. now we created the connectiion folder inside which we updated our mongo db database
+5. now moving onto the data base folder where diffrent databses are present such as user, cart, product, order , review, rating etc...
+6.now we created a user service using services folder 
+7. for user service authentication we created a seperate jwt folder inside which we wrote our jwt functionality

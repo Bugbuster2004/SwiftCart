@@ -58,9 +58,20 @@ const getUserProfileByToken = async (token, res) => {
   }
 };
 
+//get all users
+const getAllUsers = async (req, res) => {
+  try {
+    const user = await userModel.find();
+    return user;
+  } catch (error) {
+    return res.send({ message: error.message });
+  }
+};
+
 module.exports = {
   createUser,
   fetchUserById,
   fetchUserByEmail,
   getUserProfileByToken,
+  getAllUsers,
 };

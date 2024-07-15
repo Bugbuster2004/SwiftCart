@@ -7,7 +7,7 @@ const generateToken = async (userId) => {
   return token;
 };
 
-//now we want the userid from the token so that we can verify the token
+//now we want the userid from the token so that we can verify the token the token generated in the above fncn gets passed in this getuseridfromtoken fncn and then it retrives the user id
 
 const getUserIdfromToken = async (token) => {
   const decodedToken = jwt.verify(token, SECRET_KEY);
