@@ -3,21 +3,25 @@ const bcrypt = require("bcrypt");
 const Jwtprovider = require("../Jwt/jwtProvider");
 
 //this is basically like a signup to create a user
-const createUser = async (req, res) => {
-  const { name, email, password } = req.body;
+const createUser = async (userData) => {
+  let { name, email, password } = userData;
+
   const existinguser = await userModel.findOne({ email });
   try {
     if (existinguser) {
-      return res.status(400).send({ message: "User already exist" });
+      // return res.status(400).send({ message: "User already exist" });
+      throw new Error("user already exist with this email");
     }
     password = await bcrypt.hash(password, 4);
     const newuser = await userModel.create({ name, email, password });
-    if (newuser) {
-      console.log(newuser);
-      return res.status(200).send({ message: newuser });
-    }
+    // if (newuser) {
+    //   console.log(newuser);
+    //   return res.status(200).send({ message: newuser });
+    // }
+    return newuser;
   } catch (error) {
-    return res.send({ message: error.message });
+    // return res.send({ message: error.message });
+    throw new Error(error.message);
   }
 };
 
