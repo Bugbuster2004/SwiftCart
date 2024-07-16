@@ -36,7 +36,7 @@ const fetchUserById = async (userId, res) => {
 //fetching user by email
 const fetchUserByEmail = async (email, res) => {
   try {
-    const user = await userModel.findById(email);
+    const user = await userModel.findOne(email);
     if (!user) {
       return res.status(400).send({ message: "User not found by email" });
     }
