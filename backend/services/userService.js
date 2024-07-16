@@ -26,14 +26,16 @@ const createUser = async (userData) => {
 };
 
 //fetching users by id
-const fetchUserById = async (userId, res) => {
+const fetchUserById = async (userId) => {
   try {
-    const user = await userModel.findById(userId).populate("address");
-    if (!user) {
-      return res.status(400).send({ message: "User not found by id" });
-    }
+    console.log("Fetching user by ID:", userId); // Log the user ID
+
+    const user = await userModel.findById(userId);
+    console.log("this is from id ", user);
+
+    return user;
   } catch (error) {
-    return res.send({ message: error.message });
+    throw new Error("Error fetching user by ID");
   }
 };
 
@@ -41,6 +43,7 @@ const fetchUserById = async (userId, res) => {
 const fetchUserByEmail = async (email) => {
   try {
     const user = await userModel.findOne({ email });
+
     if (!user) {
       throw new Error("User not found by email");
     }
@@ -52,15 +55,18 @@ const fetchUserByEmail = async (email) => {
 };
 //getting user profile by token for this we need to first generate a token and then we need to verify that token that is created in the Jwt folder now we will just import and use thta in our fncn
 
-const getUserProfileByToken = async (token, res) => {
+const getUserProfileByToken = async (token) => {
   try {
     const userId = await Jwtprovider.getUserIdfromToken(token);
     const user = await fetchUserById(userId);
+    console.log("User ID from token:", userId); // Log the extracted user ID
+
     if (!user) {
-      return res.status(400).send({ message: "User not found by id" });
+      throw new Error("User not found by ID");
     }
+    return user;
   } catch (error) {
-    return res.send({ message: error.message });
+    throw new Error(error.message);
   }
 };
 
