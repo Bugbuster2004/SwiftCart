@@ -38,14 +38,16 @@ const fetchUserById = async (userId, res) => {
 };
 
 //fetching user by email
-const fetchUserByEmail = async (email, res) => {
+const fetchUserByEmail = async (email) => {
   try {
-    const user = await userModel.findOne(email);
+    const user = await userModel.findOne({ email });
     if (!user) {
-      return res.status(400).send({ message: "User not found by email" });
+      throw new Error("User not found by email");
     }
+    return user;
   } catch (error) {
-    return res.send({ message: error.message });
+    console.log(error);
+    throw new Error(error.message);
   }
 };
 //getting user profile by token for this we need to first generate a token and then we need to verify that token that is created in the Jwt folder now we will just import and use thta in our fncn
