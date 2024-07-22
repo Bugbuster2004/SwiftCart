@@ -1,49 +1,40 @@
+// import mongoose from "mongoose";
 const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema({
-    name:{
-        type:String,
-        required:true
+const userSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      trim: true,
     },
-    email:{
-        type:String,
-        required:true
-        },
-    password:{
-        type:String,
-        required:true
+    email: {
+      type: String,
+      required: true,
+      unique: true,
     },
-    avatar:{
-        type:String //cloudinary url
-        },
-    roleType:{
-        type:String,
-        default:"user"
+    password: {
+      type: String,
+      required: true,
     },
-    address:[{
-        type: mongoose.Schema.Types.ObjectId,
-        ref:"address"
-    }],
-    paymentInfo:[{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"payment_info"
-    }],
-    ratings:[{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"ratings"
-    }],
-    reviews:[{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"reviews"
-    }],
-    createdAt:{
-        type:Date,
-        default:Date.now()
-    }
-   
-    
+    phone: {
+      type: String,
+      required: true,
+    },
+    address: {
+      type: String,
+      required: true,
+    },
+    answer: {
+      type: String,
+      required: true,
+    },
+    role: {
+      type: Number,
+      default: 0,
+    },
+  },
+  { timestamps: true }
+);
 
-});
-// module.exports = User = mongoose.model("User", UserSchema);
-const User = mongoose.model("User", UserSchema)
-module.exports = User;
+module.exports = mongoose.model("users", userSchema);

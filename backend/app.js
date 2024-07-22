@@ -1,22 +1,22 @@
 const express = require("express");
-const app = express();
-const port = 5000;
-const jwt = require("jsonwebtoken");
-const UserModel = require("./models/usermodel");
-// const jwtkey ="sid";
+const dotenv = require("dotenv");
+const connectDB = require("./connection/conn");
 const authRoute = require("./routes/authRoute");
-const userRoute = require("./routes/userRoute");
-require("./connection/conn");
-app.use(express.json());
+const app = express();
 
+//cong=figure env
+dotenv.config();
+//configure dc
+connectDB();
+app.use(express.json());
+//configuring port
+const PORT = process.env.PORT || 3000;
+//routes
+app.use("/api/v1/auth", authRoute);
 app.get("/", (req, res) => {
-  console.log(`Listening on Port ${port}`);
   res.send("Hello World");
 });
 
-app.use("/auth", authRoute);
-app.use("/user", userRoute);
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
