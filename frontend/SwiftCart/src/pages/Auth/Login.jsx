@@ -1,18 +1,21 @@
 import React from "react";
 import Layout from "../../components/Layout/Layout";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
 import "../../Styles/AuthStyles.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useAuth } from "../../context/Auth";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [auth, setAuth] = useAuth();
 
   const [visible, setVisible] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleClick = () => {
     setVisible(!visible);
@@ -31,7 +34,13 @@ function Login() {
       );
       if (res && res.data.success) {
         toast.success(res.data && res.data.message);
-        navigate("/");
+        setAuth({
+          ...auth,
+          user: res.data.user,
+          token: res.data.token,
+        });
+        localStorage.setItem("auth", JSON.stringify(res.data));
+        navigate(location.state || "/");
       } else {
         toast.error(res.data.message);
       }
@@ -73,8 +82,11 @@ function Login() {
           </div>
 
           <button type="submit" className="btn btn-primary">
-            REGISTER
+            LOGIN
           </button>
+          <div className=" forgot">
+            <p onClick={() => navigate("/forgot-password")}>Forgot Password?</p>
+          </div>
         </form>
       </div>
     </Layout>

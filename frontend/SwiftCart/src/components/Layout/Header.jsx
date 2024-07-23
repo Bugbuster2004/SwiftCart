@@ -1,8 +1,20 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { FaBasketShopping } from "react-icons/fa6";
+import { useAuth } from "../../context/Auth";
+import toast from "react-hot-toast";
 
 function Header() {
+  const [auth, setAuth] = useAuth();
+  const handleLogout = () => {
+    setAuth({
+      ...auth,
+      user: null,
+      token: "",
+    });
+    localStorage.removeItem("auth");
+    toast.success("Logout Successfully");
+  };
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-light">
@@ -43,16 +55,50 @@ function Header() {
                   Contact Us
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink to="/register" className="nav-link text-black">
-                  Register
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/login" className="nav-link text-black">
-                  Login
-                </NavLink>
-              </li>
+              {!auth.user ? (
+                <>
+                  <li className="nav-item">
+                    <NavLink to="/register" className="nav-link text-black">
+                      Register
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink to="/login" className="nav-link text-black">
+                      Login
+                    </NavLink>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="nav-item dropdown">
+                    <NavLink
+                      className="nav-link dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      style={{ border: "none" }}
+                    >
+                      {auth?.user?.name}
+                    </NavLink>
+                    <ul className="dropdown-menu">
+                      <li>
+                        <NavLink to="/dashboard" className="dropdown-item">
+                          Dashboard
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          onClick={handleLogout}
+                          to="/login"
+                          className="dropdown-item"
+                        >
+                          Logout
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </li>
+                </>
+              )}
               <li className="nav-item">
                 <NavLink to="/cart" className="nav-link text-black">
                   <FaBasketShopping className="cart-icon" />

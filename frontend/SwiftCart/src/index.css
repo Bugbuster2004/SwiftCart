@@ -245,3 +245,12 @@
   align-items: center;
   justify-content: center;
 }
+/* --forgot-- */
+.forgot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.forgot p {
+  cursor: pointer;
+}

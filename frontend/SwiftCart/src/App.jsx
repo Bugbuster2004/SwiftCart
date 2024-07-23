@@ -9,6 +9,10 @@ import PagenotFound from "./pages/PagenotFound";
 import Home from "./pages/Home";
 import Resgister from "./pages/Auth/Resgister";
 import Login from "./pages/Auth/Login";
+import Dashboard from "./pages/User/Dashboard";
+// import Private from "./components/Routes/Private";
+import PrivateRoute from "./components/Routes/Private";
+import ForgotPass from "./pages/Auth/ForgotPass";
 
 function App() {
   return (
@@ -16,7 +20,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Resgister />} />
+        <Route path="/dashboard" element={<PrivateRoute />}>
+          <Route path="" element={<Dashboard />} />
+        </Route>
         <Route path="/login" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPass />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy-policy" element={<Policy />} />
