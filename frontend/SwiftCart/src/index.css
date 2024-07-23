@@ -1,68 +1,247 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap");
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navbar {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 6px -6px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  background-color: #fff;
+}
+
+.nav-link {
+  font-weight: 400;
+  padding: 10px 10px;
+  margin: 0 5px;
+  color: #333;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  align-items: center;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.nav-link:hover {
+  color: #007bff;
+  border-bottom: 2px solid #007bff;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.active {
+  border-bottom: 2px solid #007bff;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.navbar-brand {
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 2px;
+  color: #333;
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: #007bff;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px;
   }
-  a:hover {
-    color: #747bff;
+
+  .nav-link {
+    padding: 8px 10px;
+    font-size: 14px;
   }
-  button {
-    background-color: #f9f9f9;
+
+  .navbar-brand {
+    font-size: 18px;
   }
+}
+
+.cart-icon {
+  margin-right: 8px;
+}
+
+.logo {
+  height: 60px;
+  width: 60px;
+  border-radius: 20px;
+}
+
+/* =============================
+==========footer============= */
+
+.footer {
+  color: white;
+  padding: 15px 20px;
+  background: #000000; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #434343,
+    #000000
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #434343, #000000);
+  text-align: center;
+}
+
+.footer a {
+  text-decoration: none;
+  color: white;
+  padding: 0 10px;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.footer a:hover {
+  color: #ffefba;
+  border-bottom: 1px solid #ffefba;
+}
+
+.footer h1 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.footer p {
+  margin: 10px 0 0;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+/* =================================
+======== page not found css ======= */
+.pnf {
+  display: flex;
+  min-height: 65vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pnf-title {
+  font-size: 100px;
+  font-weight: 700;
+}
+
+.pnf-heading {
+  font-weight: normal;
+}
+
+.pnf-btn {
+  color: black;
+  border: 1px solid black;
+  text-decoration: none;
+  padding: 10px;
+  margin-top: 10px;
+}
+.pnf-btn:hover {
+  background-color: black;
+  color: white;
+}
+/* ========================================= */
+/* =========contact us ========= */
+.contact {
+  border: 2px solid #000;
+  width: 80vw;
+  max-width: 600px;
+  padding: 30px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.contact:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  background-color: #f9f9f9;
+}
+
+.contact h2 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+}
+
+.contact h2:hover {
+  color: #007bff;
+}
+
+.contact .description {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 25px;
+  transition: color 0.3s ease;
+}
+
+.contact .description:hover {
+  color: #333;
+}
+
+.contact-info {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #333;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-info svg {
+  margin-right: 10px;
+  font-size: 22px;
+  transition: transform 0.3s ease;
+}
+
+.contact-info svg:hover {
+  transform: scale(1.1);
+}
+
+.contact-info a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.contact-info:hover {
+  color: #007bff;
+}
+
+/* ----------about us */
+.contactus {
+  margin: 0;
+  padding: 0;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
