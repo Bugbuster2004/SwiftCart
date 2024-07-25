@@ -1,0 +1,37 @@
+.admin-menu-container {
+  margin: 20px;
+}
+
+.admin-panel-title {
+  color: #000;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.admin-menu {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-menu-item {
+  color: #000;
+  /* border: 2px solid #000; */
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.admin-menu-item:hover,
+.admin-menu-item:focus {
+  background-color: #000;
+  color: #fff;
+  transform: scale(1.05);
+  text-decoration: none;
+}
+
+.admin-menu-item:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,60 @@
+.create-product-container {
+  margin-top: 20px;
+}
+
+.create-product-card {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.form-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.form-control,
+.form-select {
+  border-radius: 5px;
+  border: 2px solid #000;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-animated {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-animated:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+
+.btn-animated:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.img-responsive {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  color: #000;
+  font-weight: bold;
+}
+
+.mb-3 {
+  margin-bottom: 20px !important;
+}
