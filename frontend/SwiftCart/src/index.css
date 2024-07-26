@@ -254,3 +254,47 @@
 .forgot p {
   cursor: pointer;
 }
+
+/* --product card-- */
+/* Add this to your CSS file or within a <style> tag */
+.product-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+  border-bottom: 1px solid #e0e0e0;
+  height: 200px;
+  width: fit-content;
+  object-fit: cover;
+}
+
+.card-body {
+  background-color: #fff;
+  padding: 15px;
+}
+
+.card-title {
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  color: #555;
+  font-size: 14px;
+}
