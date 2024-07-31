@@ -3,6 +3,9 @@ import { NavLink, Link } from "react-router-dom";
 import { FaBasketShopping } from "react-icons/fa6";
 import { useAuth } from "../../context/Auth";
 import toast from "react-hot-toast";
+import SearchInput from "../Form/SearchInput";
+//  } from "../../hooks/UseCategory";
+// import useCategory from "../../hooks/useCategory";
 
 function Header() {
   const [auth, setAuth] = useAuth();
@@ -36,6 +39,7 @@ function Header() {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              <SearchInput />
               <li className="nav-item">
                 <NavLink
                   to="/"
