@@ -5,8 +5,11 @@ import { Prices } from "../components/Prices";
 import axios from "axios";
 import { Checkbox, Radio } from "antd";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../context/cart";
+import toast from "react-hot-toast";
 const Home = () => {
   const navigate = useNavigate();
+  const [cart, setCart] = useCart();
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [checked, setChecked] = useState([]);
@@ -14,6 +17,19 @@ const Home = () => {
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+
+  // add item with initial qty 1
+  const addItemToCart = (product) => {
+    const existingItem = cart.find((item) => item._id === product._id);
+    if (existingItem) {
+      updateQuantity(product._id, 1);
+    } else {
+      const newCart = [...cart, { ...product, quantity: 1 }]; // Start quantity from 1
+      setCart(newCart);
+      localStorage.setItem("cart", JSON.stringify(newCart));
+    }
+    toast.success("Item added to Cart");
+  };
 
   //get all cat
   const getAllCategory = async () => {
@@ -171,7 +187,10 @@ const Home = () => {
                   >
                     More Details
                   </button>
-                  <button className="btn btn-secondary ms-1">
+                  <button
+                    className="btn btn-black ms-1"
+                    onClick={() => addItemToCart(p)} // Use addItemToCart here
+                  >
                     ADD TO CART
                   </button>
                 </div>

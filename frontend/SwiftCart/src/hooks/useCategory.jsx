@@ -1,9 +1,8 @@
+// import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
-function useCategory() {
+function UseCategory() {
   const [categories, setCategories] = useState([]);
-
   //get cat
   const getCategories = async () => {
     try {
@@ -11,6 +10,7 @@ function useCategory() {
         `${import.meta.env.VITE_BASE_URL}/api/v1/category/get-category`
       );
       setCategories(data?.category);
+      console.log(categories);
     } catch (error) {
       console.log(error);
     }
@@ -19,8 +19,7 @@ function useCategory() {
   useEffect(() => {
     getCategories();
   }, []);
-
   return categories;
 }
 
-export { useCategory };
+export default UseCategory;
