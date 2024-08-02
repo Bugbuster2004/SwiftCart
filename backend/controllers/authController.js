@@ -1,4 +1,5 @@
 const userModel = require("../models/userModel");
+const orderModel = require("../models/orderModel");
 const JWT = require("jsonwebtoken");
 const hashpass = require("../utils/auth");
 
@@ -152,9 +153,27 @@ const test = async (req, res) => {
   res.send("PROTECTED ROUTES");
 };
 
+const getOrdersController = async (req, res) => {
+  try {
+    const orders = await orderModel
+      .find({ buyer: req.user._id })
+      .populate("products", "-photo")
+      .populate("buyer", "name");
+    res.json(orders);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error WHile Geting Orders",
+      error,
+    });
+  }
+};
+
 module.exports = {
   registerController,
   loginController,
   test,
   forgotPasswordController,
+  getOrdersController,
 };

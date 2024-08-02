@@ -3,6 +3,7 @@ const {
   registerController,
   test,
   forgotPasswordController,
+  getOrdersController,
 } = require("../controllers/authController");
 const { loginController } = require("../controllers/authController");
 const { requireSignIn, isAdmin } = require("../middleware/authMiddleware");
@@ -19,5 +20,7 @@ router.get("/user-auth", requireSignIn, (req, res) => {
 router.get("/admin-auth", requireSignIn, isAdmin, (req, res) => {
   res.status(200).send({ ok: true });
 });
+
+router.get("/orders", requireSignIn, getOrdersController);
 
 module.exports = router;
