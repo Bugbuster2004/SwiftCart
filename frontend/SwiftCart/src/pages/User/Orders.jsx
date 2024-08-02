@@ -18,7 +18,7 @@ const Orders = () => {
       console.log(error);
     }
   };
-
+  //useffect
   useEffect(() => {
     if (auth?.token) getOrders();
   }, [auth?.token]);
