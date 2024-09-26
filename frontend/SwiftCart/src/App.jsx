@@ -27,6 +27,7 @@ import ProductDetails from "./pages/ProductDetails";
 import Categories from "./pages/Categories";
 import CategoryProduct from "./pages/CategoryProduct";
 import CartPage from "./pages/CartPage";
+import Ai from "./pages/User/Ai";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route path="user" element={<Dashboard />} />
           <Route path="user/orders" element={<Orders />} />
           <Route path="user/profile" element={<Profile />} />
+          <Route path="user/customize" element={<Ai />} />
         </Route>
         <Route path="/dashboard" element={<AdminRoute />}>
           <Route path="admin" element={<AdminDashboard />} />
