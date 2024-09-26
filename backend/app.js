@@ -4,6 +4,7 @@ const connectDB = require("./connection/conn");
 const authRoute = require("./routes/authRoute");
 const categoryRoute = require("./routes/categoryRoute");
 const productRoute = require("./routes/productRoute");
+const threeRoute = require("./routes/3droute");
 const cors = require("cors");
 const app = express();
 
@@ -19,6 +20,7 @@ const PORT = process.env.PORT || 3000;
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/category", categoryRoute);
 app.use("/api/v1/product", productRoute);
+app.use("/api/v1/3d", threeRoute);
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
