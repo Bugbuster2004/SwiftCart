@@ -27,65 +27,113 @@ function Ai() {
 
   return (
     <Layout>
-      <div>
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Enter search query for 3D model"
-        />
-        <button onClick={handleSearch}>Generate 3D Model</button>
+      <Container>
+        <Form>
+          <label>Generate 3D Model</label>
+          <Input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Enter search query for 3D model"
+          />
+          <Button onClick={handleSearch}>Generate 3D Model</Button>
+        </Form>
 
-        {loading && <p>Generating model...</p>}
-        {error && <p>{error}</p>}
-        {generatedImages.length > 0 &&
-          generatedImages.map((url, index) => (
-            <img key={index} src={url} alt={`Generated Model ${index}`} />
-          ))}
-      </div>
+        {loading && <Status>Generating model...</Status>}
+        {error && <Status error>{error}</Status>}
+
+        {generatedImages.length > 0 && (
+          <ModelViewer>
+            {generatedImages.map((url, index) => (
+              <img key={index} src={url} alt={`Generated Model ${index}`} />
+            ))}
+          </ModelViewer>
+        )}
+      </Container>
     </Layout>
   );
 }
 
 export default Ai;
 
-// Styled components for styling the form and image viewer
+// Styled components for professional styling
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 40px 20px;
+  background-color: #f4f4f9;
+  min-height: 100vh;
 `;
 
-const Form = styled.form`
+const Form = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+
+  label {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+`;
+
+const Input = styled.input`
+  padding: 12px 16px;
+  font-size: 16px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  transition: all 0.2s ease-in-out;
+
+  &:focus {
+    border-color: #6b8f71;
+    box-shadow: 0 0 5px rgba(107, 143, 113, 0.4);
+    outline: none;
+  }
+`;
+
+const Button = styled.button`
+  padding: 12px 20px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #6b8f71;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #345635;
+  }
+`;
+
+const Status = styled.p`
+  font-size: 16px;
+  color: ${(props) => (props.error ? "#ff4d4f" : "#6b8f71")};
+  margin-top: 20px;
+`;
+
+const ModelViewer = styled.div`
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  label {
-    margin-bottom: 10px;
-    font-size: 18px;
-  }
-
-  input {
-    margin-left: 10px;
-    padding: 5px;
-    width: 300px;
-  }
-
-  button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-`;
-
-const ModelViewer = styled.div`
-  margin-top: 20px;
-  text-align: center;
-
   img {
-    max-width: 600px;
-    height: auto;
+    max-width: 100%;
+    max-height: 500px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
 `;
