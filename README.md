@@ -45,7 +45,7 @@ SwiftCart/
 Run the backend using:
 ```sh
 npm install  # 📦 Install dependencies
-npm run dev  # 🚀 Runs with nodemon app.js
+nodemon .\app.js  # 🚀 Runs with nodemon app.js
 ```
 
 ### 🌐 Frontend
