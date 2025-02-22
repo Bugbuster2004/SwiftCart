@@ -1,7 +1,15 @@
 # SwiftCart
 
 SwiftCart is a full-stack e-commerce website built using the MERN stack with additional technologies for enhanced functionality.
+ ![Image Alt](https://github.com/Bugbuster2004/SwiftCart/blob/main/frontend/SwiftCart/public/Screenshot%202025-02-22%20153116.png?raw=true)
+![Image Alt](https://github.com/Bugbuster2004/SwiftCart/blob/main/frontend/SwiftCart/public/Screenshot%202025-02-22%20153719.png?raw=true)
+![Image Alt](https://github.com/Bugbuster2004/SwiftCart/blob/main/frontend/SwiftCart/public/Screenshot%202025-02-22%20151317.png?raw=true)
+![Image Alt](https://github.com/Bugbuster2004/SwiftCart/blob/main/frontend/SwiftCart/public/Screenshot%202025-02-22%20153148.png?raw=true)
+![Image Alt](https://github.com/Bugbuster2004/SwiftCart/blob/main/frontend/SwiftCart/public/Screenshot%202025-02-22%20153157.png?raw=true)
+![Image Alt](https://github.com/Bugbuster2004/SwiftCart/blob/main/frontend/SwiftCart/public/Screenshot%202025-02-22%20153208.png?raw=true)
+![Image Alt](https://github.com/Bugbuster2004/SwiftCart/blob/main/frontend/SwiftCart/public/Screenshot%202025-02-22%20153221.png?raw=true)
 
+ 
 ## Folder Structure
 
 ```
@@ -76,6 +84,5 @@ npm run dev  # Start the frontend development server
 
 Feel free to fork and contribute to this project. Make sure to follow best coding practices and document your changes properly.
 
-## License
 
-This project is licensed under the MIT License.
+
